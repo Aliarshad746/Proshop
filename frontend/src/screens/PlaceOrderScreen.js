@@ -70,7 +70,7 @@ const PlaceOrderScreen = ({ history }) => {
         <ProgressBar variant="success" animated now={82} />
       </FormContainer>
 
-      <Row>
+      <Row style={{ marginTop: '5px' }}>
         <Col md={8}>
           <ListGroup variant="flush">
             <ListGroup.Item>
@@ -125,60 +125,54 @@ const PlaceOrderScreen = ({ history }) => {
           </ListGroup>
         </Col>
         <Col md={4}>
-          <ListGroup variant="flush">
-            <ListGroup.Item>
-              <h2>Order Summary</h2>
-            </ListGroup.Item>
-            <ListGroup.Item>
-              <Row>
-                <Col>
-                  <h6>Entities</h6>
-                </Col>
-                <Col>
-                  <h6>Charges</h6>
-                </Col>
-              </Row>
-            </ListGroup.Item>
-            <ListGroup.Item>
-              <Row>
-                <Col>Items</Col>
-                <Col>&#x20B9; {cart.itemsPrice}</Col>
-              </Row>
-            </ListGroup.Item>
-            <ListGroup.Item>
-              <Row>
-                <Col>Shipping</Col>
-                <Col>&#x20B9; {cart.shippingPrice}</Col>
-              </Row>
-            </ListGroup.Item>
-            <ListGroup.Item>
-              <Row>
-                <Col>Tax</Col>
-                <Col>&#x20B9; {cart.taxPrice}</Col>
-              </Row>
-            </ListGroup.Item>
-            <ListGroup.Item>
-              <Row>
-                <Col>
-                  <h6>Grand Total</h6>
-                </Col>
-                <Col>&#x20B9; {cart.totalPrice}</Col>
-              </Row>
-            </ListGroup.Item>
-            <ListGroup.Item>
-              {error && <Message variant="danger">{error}</Message>}
-            </ListGroup.Item>
-            <ListGroup.Item>
-              <Button
-                type="button"
-                className="btn btn-block"
-                disabled={cart.cartItems.length === 0}
-                onClick={placeOrderHandler}
-              >
-                Place Order
-              </Button>
-            </ListGroup.Item>
-          </ListGroup>
+          <Card>
+            <ListGroup variant="flush">
+              <ListGroup.Item>
+                <h2>Order Summary</h2>
+              </ListGroup.Item>
+              <ListGroup.Item>
+                <Row>
+                  <Col>Items</Col>
+                  <Col>&#x20B9; {cart.itemsPrice}</Col>
+                </Row>
+              </ListGroup.Item>
+              <ListGroup.Item>
+                <Row>
+                  <Col>Shipping</Col>
+                  <Col>&#x20B9; {cart.shippingPrice}</Col>
+                </Row>
+              </ListGroup.Item>
+              <ListGroup.Item>
+                <Row>
+                  <Col>Tax</Col>
+                  <Col>&#x20B9; {cart.taxPrice}</Col>
+                </Row>
+              </ListGroup.Item>
+              <ListGroup.Item>
+                <Row>
+                  <Col>
+                    <h6>Total</h6>
+                  </Col>
+                  <Col>&#x20B9; {cart.totalPrice}</Col>
+                </Row>
+              </ListGroup.Item>
+              {error && (
+                <ListGroup.Item>
+                  <Message variant="danger">{error}</Message>
+                </ListGroup.Item>
+              )}
+              <ListGroup.Item>
+                <Button
+                  type="button"
+                  className="btn btn-block"
+                  disabled={cart.cartItems.length === 0}
+                  onClick={placeOrderHandler}
+                >
+                  Place Order
+                </Button>
+              </ListGroup.Item>
+            </ListGroup>
+          </Card>
         </Col>
       </Row>
     </>
