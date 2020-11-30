@@ -28,3 +28,5 @@ npm install
 cd frontend
 npm install
 ```
+
+Add to cart functionality is done with the help of redux
